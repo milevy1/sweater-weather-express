@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "miml",
+    "password": null,
+    "database": "sweater-weather-express_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "miml",
+    "password": null,
+    "database": "sweater-weather-express_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "miml",
+    "password": null,
+    "database": "sweater-weather-express_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
