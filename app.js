@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/api/v1/users');
 var sessionsRouter = require('./routes/api/v1/sessions');
 
+var services = require('./services');
+
 var app = express();
 
 app.use(logger('dev'));
