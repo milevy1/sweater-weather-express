@@ -1,12 +1,29 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    email: DataTypes.STRING,
-    password_digest: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      validate: {
+        isEmail: true
+      }
+    },
+    password_digest: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      },
     api_key: DataTypes.STRING
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
+    User.belongsToMany(
+      models.Favorite,
+      { through: 'UserFavorites',
+        as: 'favorites',
+        foreignKey: 'favorite_id'}
+    );
   };
   return User;
 };
