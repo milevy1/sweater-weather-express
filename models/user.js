@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: true
-      },
+      }
+    },
     api_key: DataTypes.STRING
   }, {});
   User.associate = function(models) {
