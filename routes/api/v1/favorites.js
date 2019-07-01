@@ -40,4 +40,38 @@ router.post("/", async function(req, res, next) {
     }
 });
 
+router.delete("/", async function(req, res, next) {
+  res.setHeader("Content-Type", "application/json");
+  try {
+    // 1. Authenticate API key
+    let user = await User.findOne({
+      where: {
+        api_key: req.body.api_key
+        }
+      })
+    if (user == null) {
+      res.status(401).send({"Error": "Unauthorized. Invalid API key."});
+    }
+    // 2. Find Favorite for req.body.location
+    let favorite = await Favorite.findOne({
+      where: {
+        location: req.body.location
+      }
+    })
+    // 3. Find and destroy a UserFavorite
+    let userFavorite = await UserFavorite.findOne({
+      where: {
+        user_id: user.dataValues.id,
+        favorite_id: favorite.dataValues.id
+      }
+    })
+    userFavorite.destroy()
+    // 4. Send confirmation
+    res.status(204).send()
+    // End of Try, catch errors
+  } catch(error) {
+      res.status(401).send({ error });
+    }
+});
+
 module.exports = router;
