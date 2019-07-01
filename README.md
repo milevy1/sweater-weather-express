@@ -9,3 +9,7 @@ For your Week 1 solo project, you will replicate Sweater Weather as an Express A
 - Familiarize self with mechanics of building an Express API
 
 https://backend.turing.io/module4/projects/express_sweater_weather/express_sweater_weather_spec
+
+
+## Database Schema
+![mock_search](schema.png)
